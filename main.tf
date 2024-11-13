@@ -1,11 +1,9 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_s3_bucket" "my_bucket" {
-  bucket  = "my-unique-bucket-name"
-  tags    = {
-	Name          = "kkotula_s3_bucket"
-	Environment    = "Production"
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "harness-dev"
+    workspaces {
+      name = "vl-prerequisites-cloud-run-1"
+    }
   }
 }

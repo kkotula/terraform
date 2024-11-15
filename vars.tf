@@ -1,15 +1,5 @@
-variable "ami_id" {
-  default = "ami-0b0ea68c435eb488d"
-}
-
-variable "instance_type" {
-  default = "t3.micro"
-}
-
-variable "my_aws_access_key" {
-  type = string
-}
-
-variable "my_aws_secret_key" {
-  type = string
+resource "null_resource" "example-2" {
+  provisioner "local-exec" {
+    command = "echo This command will execute whenever the configuration changes"
+  }
 }

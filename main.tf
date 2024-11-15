@@ -35,3 +35,28 @@ variable "tags" {
     Environment = "Dev"
   }
 }
+
+# Define the provider
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define the S3 bucket resource
+resource "aws_s3_bucket" "example" {
+  bucket = "my-unique-bucket-name-12345"  # Change this to your desired bucket name
+  acl    = "private"  # Default ACL for the bucket, options include 'private', 'public-read', etc.
+  
+  # Optionally, add any additional configuration you need
+  versioning {
+    enabled = true  # Enable versioning to keep versions of objects in the bucket
+  }
+
+  lifecycle {
+    prevent_destroy = true  # Prevents the bucket from being deleted by Terraform
+  }
+}
+
+# Outputs to show information about the bucket
+output "bucket_name" {
+  value = aws_s3_bucket.example.bucket
+}

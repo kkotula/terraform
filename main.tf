@@ -1,5 +1,10 @@
-resource "null_resource" "example" {
+resource "null_resource" "example1" {
+  count = var.countt
   provisioner "local-exec" {
-    command = "echo This command will execute whenever the configuration changes"
+    command = "echo vlvllvlvlvl"
   }
+}
+
+variable "countt" {
+  type = number
 }
